@@ -1,6 +1,17 @@
-# Keyword Detection Demo
+# Flexible Electric Owl
 
-This demo is a server application consuming audio from Twilio Media Streams and using IBM Watson Cloud Text to Speech to perform realtime transcriptions and keyword detection.
+### **Region:**
+Americas
+
+### **Team Members**:
+John Lafer  
+Lilllan Wakefield  
+Mark Shavers
+
+---
+
+### Project Overview
+This project is to improve the experience of call center agents by using transcription analysis of real time conversations to be able to detect when an agent could use assistance.  Once this signal has been detected a visual queue will be displayed to a designated resource and they will be able to proactively contact the agent and offer assistance.
 
 ## App sever setup
 
@@ -18,9 +29,12 @@ Run `npm install`
 
 #### Running the server
 
-Start with `npm start any keywords you want to search for`
+Start with `npm start happy angry`
 
 ## Setup
+
+Replace `<Your-Agent-Path>` on line 65 in `index.js` with your Electric Imp agent path.
+
 
 You can setup your environment to run the demo by using the CLI (BETA) or the Console.
 

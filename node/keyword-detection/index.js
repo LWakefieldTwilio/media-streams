@@ -62,7 +62,7 @@ app.ws("/media", (ws, req) => {
     const options = {
       hostname: 'agent.electricimp.com',
       port: 443,
-      path: '/5NA93G4dDv-8?led=1',
+      path: '/<Your-Agent-Path>?led=1',
       method: 'GET'
     }
   
