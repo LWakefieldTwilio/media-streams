@@ -5,6 +5,7 @@ const SpeechToText = require('watson-developer-cloud/speech-to-text/v1');
 const Transform = require('stream').Transform;
 const app = express();
 const PORT = 8080;
+const https = require('https');
  
 // extend express app with app.ws()
 expressWebSocket(app, null, {
@@ -46,11 +47,39 @@ app.ws("/media", (ws, req) => {
     msg.results.forEach(result => {
       if (result.keywords_result) {
         Object.keys(result.keywords_result).forEach(keyword => {
-          console.log(`Keyword detected "${keyword}": ${result.alternatives[0].transcript}`);
+         ElectricImp(keyword)
+          //console.log(`Keyword detected "${keyword}": ${result.alternatives[0].transcript}`)
+          
         });  
       }
     });
   });
+
+  const ElectricImp = (keyword) => {
+    //console.log(`Keyword detected "${keyword}": ${result.alternatives[0].transcript}`);
+    
+    return new Promise((resolve, reject) => {
+    const options = {
+      hostname: 'agent.electricimp.com',
+      port: 443,
+      path: '/5NA93G4dDv-8?led=1',
+      method: 'GET'
+    }
+  
+    const req = https.request(options, res => {
+      resolve(`statusCode: ${res.statusCode}`)
+  
+      res.on('data', d => {
+        process.stdout.write(d)
+      })
+    })
+  
+    req.on('error', error => {
+      reject(error)
+    })
+  
+    req.end()
+  })}
   
 });
 
