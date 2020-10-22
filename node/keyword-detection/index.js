@@ -48,16 +48,12 @@ app.ws("/media", (ws, req) => {
       if (result.keywords_result) {
         Object.keys(result.keywords_result).forEach(keyword => {
          ElectricImp(keyword)
-          //console.log(`Keyword detected "${keyword}": ${result.alternatives[0].transcript}`)
-          
         });  
       }
     });
   });
 
   const ElectricImp = (keyword) => {
-    //console.log(`Keyword detected "${keyword}": ${result.alternatives[0].transcript}`);
-    
     return new Promise((resolve, reject) => {
     const options = {
       hostname: 'agent.electricimp.com',
